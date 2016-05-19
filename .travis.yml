@@ -1,1 +1,21 @@
 # this is travis file
+
+language: objective-c
+cache: bundler
+
+before_install:
+- export NODEJS_VERSION=v0.10.31
+- export NVM_DIR=$HOME/.nvm
+- export PATH=$PATH:$NVM_DIR/$NODEJS_VERSION/bin
+- source $NVM_DIR/nvm.sh
+- nvm install $NODEJS_VERSION
+- nvm use $NODEJS_VERSION
+- npm install -g appium
+- npm install wd
+- echo $PWD
+
+install:
+- bundle install
+
+script:
+- rake acceptance_test
