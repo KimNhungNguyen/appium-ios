@@ -20,7 +20,7 @@ desired_caps = {
     	app:           APP_PATH,
   	},
   	appium_lib: {
-	    sauce_username: 'nhung_nguyen'
+	    sauce_username: 'nhung_nguyen',
 	    sauce_access_key: 'e6199f20-a2cb-436e-8158-51ad8bbbac6c'
 	  }
 	}
