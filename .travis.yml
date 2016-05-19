@@ -1,4 +1,4 @@
-# this is travis file
+# this is travis file, which acts as a terminal on ci
 
 language: objective-c
 cache: bundler
@@ -7,7 +7,9 @@ before_install:
 - export NODEJS_VERSION=v4.4.3
 - export NVM_DIR=$HOME/.nvm
 - export PATH=$PATH:$NVM_DIR/$NODEJS_VERSION/bin
+# install nvm
 - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+# activate nvm
 - source ~/.nvm/nvm.sh
 - uname -a
 - nvm install $NODEJS_VERSION
