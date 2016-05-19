@@ -7,6 +7,8 @@ before_install:
 - export NODEJS_VERSION=v4.4.3
 - export NVM_DIR=$HOME/.nvm
 - export PATH=$PATH:$NVM_DIR/$NODEJS_VERSION/bin
+- curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.1/install.sh | bash
+- source ~/.nvm/nvm.sh
 - nvm install $NODEJS_VERSION
 - nvm use $NODEJS_VERSION
 - npm install -g appium
