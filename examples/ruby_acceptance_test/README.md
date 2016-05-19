@@ -3,10 +3,17 @@
 + See how to use appium to manually get location of an element using terminal and GUI
 + Run locally --> Done after 2 days (Day 1: To connect appium and cucumber and phone)
 Day 2: Fix Appium Inspector (by reinstall appium after deleting the old one)
-+ Run on CI: how to set it up???
-Fork the project on Github (to make it your project). Then clone into your machine. Then make change and push the code.
-Travis CI support open Git hub project, and the setting up is pretty easy
-+ Run on Saucelab
++ Run on CI: Create a repo on Github, then follow the instruction of initialize a local repo (inside sample-code), then create a README file, do the first commit, and then it will recognize the other folders/file in the local repo. Add, commit and push all those files
+
+Should not fork a repo, then work on it, because you may end up messing with the original repo (even you already delete .git and .gitinore folders which contain the connection of the original repo)
+
+Think of travis CI run all command in .travis.yml the same way as you do it on command line/ terminal
+
++ Run on Saucelab:
+There will be 2 ways:
+. CI from travis_ci to Saucelab
+. Run on Sauce lab independantly: look like you need to upload the app on somewhere, and point to it when you run Saucelab
+
 + Choose different test tags to run on different environment
 
 
