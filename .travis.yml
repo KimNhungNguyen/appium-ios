@@ -23,3 +23,11 @@ install:
 
 script:
 - rake acceptance_test
+
+addons:
+  sauce_connect:
+    username: "nhung_nguyen"
+    access_key: "vss8I3wHfmcYpKtAO+LEaZlMkjORdddZVnuiMuVa63so/K4y7PMzW/uFDchkIZ0bUdzG9hN1WhWpDb5QP4PhJU2ZT+JCtr5kio74ff1Jh4IApoq3kPCJwd/ET/RO8DDjJNSosE+nKpFjd0Ks8YxpH8Wdo9+c8XNnufGV8j/HDeOidChTSQZUK8/S5JmQHTjcs4SPcT9UJAiR9woO+Ej5AM0OnhD6TBssl46tcilB9/ASV3x41t3yEVGSlHjcv1z27WZXu76pK6tuiEdWadcsY1lYGVtrVdFLSRdYOuWW74vHnu9grFBjZMX5W8MaXSQGa2Akuz9pOsFLEwdRjD0Kp0p2YSxDIY5TqpypJJNXlb3mbvUu3Wsf1UlwBMmykAnCAlQusrq//8ix2T/rmcM/OxGzvI49I1urc54D4miBJPk6yTve6X6wZH1qlFaPMuMAcDVg3UgfvRuYFYPbgcQVi9qbsgXWsrFNxMOSw29/78KGvDLeBls7j10xJSP9bxIy40Vnz586KNspDfirgSz5aPWjm8AGViFZq0AHw3clj+p5gtt5yLkYKyTtla6D+uTzYZ6+WrEKuVzfv5TE0pHVvyzOxbB8/rwWwAuf5qUr43ywYHsFDTM8Zn4I5bkv61tAtoUnnUT12rvi2iCzHMQ86aoUEhvVMoJhAvkYAdKgNFQ="
+
+script:
+- rake acceptance_test    
