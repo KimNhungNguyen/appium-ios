@@ -21,8 +21,8 @@ before_install:
 install:
 - bundle install
 
-script:
-- rake acceptance_test
+# script:
+# - rake acceptance_test
 
 addons:
   sauce_connect:
