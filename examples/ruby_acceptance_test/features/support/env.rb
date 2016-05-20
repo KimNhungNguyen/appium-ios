@@ -12,8 +12,8 @@ max_wait_in_seconds = 10
 World PageObject::PageFactory
 World Test::Unit::Assertions  # need this for 'assert' method
 
-SAUCE_USERNAME = ENV['nhung_nguyen']
-SAUCE_ACCESS_KEY = ENV['e6199f20-a2cb-436e-8158-51ad8bbbac6c']
+SAUCE_USERNAME = ENV["SAUCE_USERNAME"]
+SAUCE_ACCESS_KEY = ENV["SAUCE_ACCESS_KEY"]
 
 desired_caps = 
 { caps:       
@@ -21,11 +21,12 @@ desired_caps =
     	platformName:  'iOS',
     	versionNumber: '9.3',
 	    deviceName:    'iPhone 6',
-	    app:           APP_PATH
+	    # app:           APP_PATH
+	    app: 			'sauce-storage:TestApp.zip'
 	},
 	appium_lib: {
-		sauce_username: nil,
-		sauce_access_key:  nil
+		sauce_username: SAUCE_USERNAME,
+		sauce_access_key:  SAUCE_ACCESS_KEY
     }
 }
 

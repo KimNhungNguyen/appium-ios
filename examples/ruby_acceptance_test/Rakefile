@@ -25,3 +25,10 @@ task :acceptance_test => [:unit_test, :integration_test] do
   puts "Perform user acceptance test"
   Rake::Task["appium_test"].invoke
 end
+
+task :acceptance_test_sauce => [:unit, :integration_test] do
+	puts "Perform user acceptance test on saucelab"
+	# source ~/.bash_profile
+	curl -u SAUCE_USERNAME:SAUCE_ACCESS_KEY -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/SAUCE_USERNAME/TestApp?overwrite=true --data-binary @../../apps/TestApp/build/release-iphonesimulator/TestApp.zip
+	Rake::Task['appium_test'].invoke
+end
