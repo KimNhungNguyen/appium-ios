@@ -15,39 +15,37 @@ World Test::Unit::Assertions  # need this for 'assert' method
 SAUCE_USERNAME = ENV['nhung_nguyen']
 SAUCE_ACCESS_KEY = ENV['e6199f20-a2cb-436e-8158-51ad8bbbac6c']
 
-desired_caps = {
-  	caps:       {
+desired_caps = 
+{ caps:       
+	{
     	platformName:  'iOS',
     	versionNumber: '9.3',
-    	deviceName:    'iPhone 6',
-    	app:           APP_PATH,
-  	},
-  	appium_lib: {
-	    sauce_username: nil,
-	    sauce_access_key:  nil
-	  }
-	}
-end
+	    deviceName:    'iPhone 6',
+	    app:           APP_PATH
+	},
+	appium_lib: {
+		sauce_username: nil,
+		sauce_access_key:  nil
+    }
+}
 
 def auth_details
 	un = SAUCE_USERNAME
 	pw = SAUCE_ACCESS_KEY
 	unless un && pw
-    STDERR.puts <<-EOF
-      Your SAUCE_USERNAME or SAUCE_ACCESS_KEY environment variables 
-      are empty or missing.
+  		STDERR.puts <<-EOF
+      	Your SAUCE_USERNAME or SAUCE_ACCESS_KEY environment variables 
+      	are empty or missing.
       
-      You need to set these values to your Sauce Labs username and access
-      key, respectively.
+      	You need to set these values to your Sauce Labs username and access
+      	key, respectively.
 
-      If you don't have a Sauce Labs account, you can get one for free at
-      http://www.saucelabs.com/signup
-    EOF
-
-    exit
-  end
-
-  return "#{un}:#{pw}"
+      	If you don't have a Sauce Labs account, you can get one for free at
+      	http://www.saucelabs.com/signup
+    	EOF
+    	exit
+  	end
+  	return "#{un}:#{pw}"
 end
 
 def server_url
