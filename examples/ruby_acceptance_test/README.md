@@ -1,44 +1,38 @@
 = Successfully make appium start up by itself before the test if it's not running in the background
-= Things to do:
-+ See how to use appium to manually get location of an element using terminal and GUI
-+ Run locally --> Done after 2 days (Day 1: To connect appium and cucumber and phone)
-Day 2: Fix Appium Inspector (by reinstall appium after deleting the old one)
-+ Run on CI: Create a repo on Github, then follow the instruction of initialize a local repo (inside sample-code), then create a README file, do the first commit, and then it will recognize the other folders/file in the local repo. Add, commit and push all those files
 
-Should not fork a repo, then work on it, because you may end up messing with the original repo (even you already delete .git and .gitinore folders which contain the connection of the original repo)
-
-Think of travis CI run all command in .travis.yml the same way as you do it on command line/ terminal
-
-+ Run on Saucelab:
-There will be 2 ways:
-. CI from travis_ci to Saucelab
-. Run on Sauce lab independantly: look like you need to upload the app on somewhere, and point to it when you run Saucelab
-
-+ Choose different test tags to run on different environment
-
-
-Note:
-=== If at command line, type 'appium --version' and it says 'command not found'
---> should uninstall appium (delete appium in Applications) and install appium
-again using package, choosing the most update one (don't install via npm
-as there will be dependency and it's hard to detect). For example, at the moment
+= Fixing Appium Inspector: If you run 'appium --version' in terminal and it doesn't regconize appium's version, then there is something wrong with your appium. The simplest way to fix it is deleting it from Applications, then reinstall using package (not by 'npm install -g appium' as this makes it hard to detect and fix the problem
+Choose the most update appium, for example, at the moment
 it is appium 1.5.2: https://bitbucket.org/appium/appium.app/downloads/appium-1.5.2.dmg
 
-This problem can leads to error message like: Appium Inspector not working
-+ When launching Appium Inspector: The error message would be like:
+This problem can leads to error message like: Appium Inspector not working: When launching Appium Inspector: The error message would be like:
 Could not start a new session
-Be sure the Appium server is running with an application opened by using the "App Path"
-parameter in Appium.app (along with package and activity for Android)...
+Be sure the Appium server is running with an application opened by using the "App Path" parameter in Appium.app (along with package and activity for Android)... although App Path is correctly added via Appium GUI and also in conf file
 
-although App Path is correctly added via Appium GUI and also in conf file
-
-=== To kill an appium process:
+= To kill an appium process:
 'ps -A | grep appium'
 'kill <process id>
 
-==> Do the same thing for Android
+= To connect appium with the app, just go to Appium GUI, then specify the app path and choose (by typing) the app version
 
-==> Hoi anh giang cho nghe Rakefile
+= To run the app on CI:
++ Create a project on Github: follow the instruction of initialize a repo (inside sample-code). It first doesn't recognize you've got files and folders inside sample-code. You need create a README file, do the first commit. At that time, it will recognize the other folders/file in the local repo (sample-code). Add, commit and push all those files
+
+Important note: Should not fork a repo, then work on it, because you may end up messing with the original repo (even you already delete .git and .gitinore folders which contain the connection of the original repo)
+
+Think of travis CI as a computer that will run all command in .travis.yml the same way as you do it on command line/ terminal.
+
+= To run the app on Sauce lab:
++ Need to upload the .app file as a TestApp.zip file onto an internet source that Sauce can connnect to and download. Note that the way Sauce download your app is like the way curl does on command line 'curl -O https://www.dropbox.com/s/jqc84l161dia7il/TestApp.zip?dl=1'. If curl is not successful, then it will not be successful on lab
+
+Note: 
+1. Upload to sauce storage is not working. So I choose to upload it into dropbox
+2. The reason why I do not run from travis_ci to Saucelab as we rarely do CI to Saucelab.
+
+
+To do task:
++ Take env variables to run on CI
++ Choose different test tags to run on different environment
++ Make env.rb general to run on CI and sauce
 
 ==> Questions:
 + Why app restart twice whenever it runs?

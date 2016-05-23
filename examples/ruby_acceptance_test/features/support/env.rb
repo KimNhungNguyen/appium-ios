@@ -3,32 +3,36 @@ require 'rspec/expectations'
 require 'page-object'
 require 'test/unit/assertions'
 
-# caps = Appium.load_appium_txt file: File.expand_path('../', __FILE__), verbose: true
-
-APP_PATH = '../../apps/TestApp/build/release-iphonesimulator/TestApp.app'
-
+APP_PATH_LOCAL = '../../apps/TestApp/build/release-iphonesimulator/TestApp.app'
+APP_PATH_SAUCE = 'https://www.dropbox.com/s/jqc84l161dia7il/TestApp.zip?dl=1'
 max_wait_in_seconds = 10
 
 World PageObject::PageFactory
 World Test::Unit::Assertions  # need this for 'assert' method
 
-SAUCE_USERNAME = ENV["SAUCE_USERNAME"]
-SAUCE_ACCESS_KEY = ENV["SAUCE_ACCESS_KEY"]
+# SAUCE_USERNAME = ENV["SAUCE_USERNAME"]
+# SAUCE_ACCESS_KEY = ENV["SAUCE_ACCESS_KEY"]
 
-desired_caps = 
-{ caps:       
-	{
-    	platformName:  'iOS',
-    	versionNumber: '9.3',
-	    deviceName:    'iPhone 6',
-	    # app:           APP_PATH
-	    app: 			'sauce-storage:TestApp.zip'
-	},
-	appium_lib: {
-		sauce_username: SAUCE_USERNAME,
-		sauce_access_key:  SAUCE_ACCESS_KEY
-    }
-}
+SAUCE_USERNAME = "nhung_nguyen"
+SAUCE_ACCESS_KEY = "e6199f20-a2cb-436e-8158-51ad8bbbac6c"
+
+def desired_caps 
+	{ caps:       
+		{
+	    	'appium-version' => '1.5.2',
+	    	platformName:  'iOS',
+	    	platformVersion: '9.2',
+		    # deviceName:    'iPhone 6',
+		    deviceName: 'iPhone Simulator',
+		    # app:           APP_PATH_LOCAL
+		    app: 			APP_PATH_SAUCE
+		},
+		appium_lib: {
+			sauce_username: SAUCE_USERNAME,
+			sauce_access_key:  SAUCE_ACCESS_KEY
+	    }
+	}
+end
 
 def auth_details
 	un = SAUCE_USERNAME
@@ -76,11 +80,11 @@ def shutdown_appium
 end
 
 Before do
-	if !$global_setup
-		start_appium
-		$global_setup = true
-		sleep 5
-	end
+	# if !$global_setup
+	# 	start_appium
+	# 	$global_setup = true
+	# 	sleep 5
+	# end
 	@driver = Appium::Driver.new(desired_caps)
 
   # need to type @browser to be able to use PageObject (OMG!!!), just '@driver.start_driver' doesn't work

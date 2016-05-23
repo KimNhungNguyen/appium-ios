@@ -17,18 +17,21 @@ task :package => [:unit_test, :integration_test, :acceptance_test] do
   puts "Generate final TestApp.app package"
 end
 
-Cucumber::Rake::Task.new(task_name = "appium_test", desc = "Run End to End automation suite") do |t|
-  t.cucumber_opts = "--tags ~@ignore --format pretty ./features/."
+Cucumber::Rake::Task.new(task_name = "appium_test_ci", desc = "Run End to End automation suite") do |t|
+  t.cucumber_opts = "--tags ~@ci --format pretty ./features/."
 end
 
-task :acceptance_test => [:unit_test, :integration_test] do
+Cucumber::Rake::Task.new(task_name = "appium_test_sauce", desc = "Run End to End automation suite") do |t|
+  t.cucumber_opts = "--tags ~@sauce --format pretty ./features/."
+end
+
+
+task :acceptance_test_ci => [:unit_test, :integration_test] do
   puts "Perform user acceptance test"
-  Rake::Task["appium_test"].invoke
+  Rake::Task["appium_test_ci"].invoke
 end
 
-task :acceptance_test_sauce => [:unit, :integration_test] do
+task :acceptance_test_sauce => [:unit_test, :integration_test] do
 	puts "Perform user acceptance test on saucelab"
-	# source ~/.bash_profile
-	curl -u SAUCE_USERNAME:SAUCE_ACCESS_KEY -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/SAUCE_USERNAME/TestApp?overwrite=true --data-binary @../../apps/TestApp/build/release-iphonesimulator/TestApp.zip
-	Rake::Task['appium_test'].invoke
+	Rake::Task['appium_test_sauce'].invoke
 end
