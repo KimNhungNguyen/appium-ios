@@ -26,8 +26,8 @@ def desired_caps
 	    	platformVersion: '8.1',
 		    deviceName:    'iPhone 6',
 		    # deviceName: 'iPhone Simulator', # this is for sauce
-		    # app:           APP_PATH_LOCAL
-		    app: 			APP_PATH_SAUCE
+		    app:           APP_PATH_LOCAL
+		    # app: 			APP_PATH_SAUCE
 		},
 		appium_lib: {
 			sauce_username: SAUCE_USERNAME,
