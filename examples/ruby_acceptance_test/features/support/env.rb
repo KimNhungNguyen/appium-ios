@@ -5,16 +5,17 @@ require 'test/unit/assertions'
 
 APP_PATH_LOCAL = '../../apps/TestApp/build/release-iphonesimulator/TestApp.app'
 APP_PATH_SAUCE = 'https://www.dropbox.com/s/jqc84l161dia7il/TestApp.zip?dl=1'
+
 max_wait_in_seconds = 10
 
 World PageObject::PageFactory
 World Test::Unit::Assertions  # need this for 'assert' method
 
-# SAUCE_USERNAME = ENV["SAUCE_USERNAME"]
-# SAUCE_ACCESS_KEY = ENV["SAUCE_ACCESS_KEY"]
+SAUCE_USERNAME = ENV["SAUCE_USERNAME"]
+SAUCE_ACCESS_KEY = ENV["SAUCE_ACCESS_KEY"]
 
-SAUCE_USERNAME = "nhung_nguyen"
-SAUCE_ACCESS_KEY = "e6199f20-a2cb-436e-8158-51ad8bbbac6c"
+# SAUCE_USERNAME = "nhung_nguyen"
+# SAUCE_ACCESS_KEY = "e6199f20-a2cb-436e-8158-51ad8bbbac6c"
 
 def desired_caps 
 	{ caps:       
@@ -80,11 +81,11 @@ def shutdown_appium
 end
 
 Before do
-	# if !$global_setup
-	# 	start_appium
-	# 	$global_setup = true
-	# 	sleep 5
-	# end
+	if !$global_setup
+		start_appium
+		$global_setup = true
+		sleep 5
+	end
 	@driver = Appium::Driver.new(desired_caps)
 
   # need to type @browser to be able to use PageObject (OMG!!!), just '@driver.start_driver' doesn't work
