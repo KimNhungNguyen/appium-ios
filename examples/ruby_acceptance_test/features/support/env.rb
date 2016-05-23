@@ -22,9 +22,10 @@ def desired_caps
 		{
 	    	'appium-version' => '1.5.2',
 	    	platformName:  'iOS',
-	    	platformVersion: '9.2',
-		    # deviceName:    'iPhone 6',
-		    deviceName: 'iPhone Simulator',
+	    	# platformVersion: '9.2',
+	    	platformVersion: '8.1',
+		    deviceName:    'iPhone 6',
+		    # deviceName: 'iPhone Simulator', # this is for sauce
 		    # app:           APP_PATH_LOCAL
 		    app: 			APP_PATH_SAUCE
 		},

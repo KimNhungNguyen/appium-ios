@@ -1,3 +1,9 @@
+To do task:
++ Take env variables to run on CI
++ Choose different test tags to run on different environment
++ Make env.rb general to run on CI and sauce
+
+
 = Successfully make appium start up by itself before the test if it's not running in the background
 
 = Fixing Appium Inspector: If you run 'appium --version' in terminal and it doesn't regconize appium's version, then there is something wrong with your appium. The simplest way to fix it is deleting it from Applications, then reinstall using package (not by 'npm install -g appium' as this makes it hard to detect and fix the problem
@@ -29,10 +35,6 @@ Note:
 2. The reason why I do not run from travis_ci to Saucelab as we rarely do CI to Saucelab.
 
 
-To do task:
-+ Take env variables to run on CI
-+ Choose different test tags to run on different environment
-+ Make env.rb general to run on CI and sauce
 
 ==> Questions:
 + Why app restart twice whenever it runs?
