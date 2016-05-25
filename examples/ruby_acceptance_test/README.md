@@ -1,7 +1,6 @@
-To do task:
-+ Take env variables to run on CI
-+ Choose different test tags to run on different environment
-+ Make env.rb general to run on CI and sauce
+To do list:
++ Make ENV for sauce access key
++ 
 
 
 = Successfully make appium start up by itself before the test if it's not running in the background
@@ -43,6 +42,10 @@ There's another way for private repo
 The Real Device Cloud is now available in beta for enterprise customers, with pricing starting at $449 per device per month.
 
 = You can upload, download, zip a file via terminal. Learn that :-). It's not that difficult
+
+= Tag: ~@ignore: not run the test with @ignore
+= ENV variable: Default ruby có array ENV, đó là global array. Nếu thêm một element vào nó, thì co the truy xuất ở bất kỳ đâu. VD: ENV['RAKE_TASK'] = "some_string": nghĩa là thêm một element RAKE_TASK vào ENV, nó có giá trị là "some_string"
+
 
 ==> Questions:
 + Why app restart twice whenever it runs?
