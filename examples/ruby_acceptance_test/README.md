@@ -1,7 +1,10 @@
 To do list:
 + Make ENV for sauce access key
-+ 
++ Why it doesn't open the device when run locally?
 
+==> Questions:
++ Why app restart twice whenever it runs?
++ Why app automatically shut down after 1 minute?
 
 = Successfully make appium start up by itself before the test if it's not running in the background
 
@@ -45,9 +48,3 @@ The Real Device Cloud is now available in beta for enterprise customers, with pr
 
 = Tag: ~@ignore: not run the test with @ignore
 = ENV variable: Default ruby có array ENV, đó là global array. Nếu thêm một element vào nó, thì co the truy xuất ở bất kỳ đâu. VD: ENV['RAKE_TASK'] = "some_string": nghĩa là thêm một element RAKE_TASK vào ENV, nó có giá trị là "some_string"
-
-
-==> Questions:
-+ Why app restart twice whenever it runs?
-+ Why app automatically shut down after 1 minute?
-+ Can we get an element by name? Or should we just use 'id' or 'xpath'?
