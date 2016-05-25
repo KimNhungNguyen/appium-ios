@@ -21,6 +21,8 @@ script:
 
 # zip TestApp.app file after every build, ideally if the test passes
 # - rm ./apps/TestApp/build/release-iphonesimulator/TestApp.zip
+- cd ..
+- cd ..
 - zip -r ./apps/TestApp/build/release-iphonesimulator/TestApp.zip ./apps/TestApp/build/release-iphonesimulator/TestApp.app
 # upload the zip file to dropbox
 
