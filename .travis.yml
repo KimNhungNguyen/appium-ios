@@ -17,7 +17,12 @@ before_install:
 install:
 - bundle install
 script:
-- rake acceptance_test_ci
+- rake appium_test_ci
+
+# zip TestApp.app file after every build, ideally if the test passes
+# - rm ./apps/TestApp/build/release-iphonesimulator/TestApp.zip
+- zip -r ./apps/TestApp/build/release-iphonesimulator/TestApp.zip ./apps/TestApp/build/release-iphonesimulator/TestApp.app
+# upload the zip file to dropbox
 
 # addons:
 #   sauce_connect:
