@@ -19,10 +19,10 @@ end
 
 Cucumber::Rake::Task.new(task_name = "appium_test_ci", desc = "Run End to End automation suite") do |t|
   ENV['RAKE_TASK'] = 'appium_test_ci'
-  t.cucumber_opts = "--tags ~@ci --format pretty ./features/."
+  t.cucumber_opts = "--tags @ci ~@ignore --format pretty ./features/."
 end
 
 Cucumber::Rake::Task.new(task_name = "appium_test_saucelab", desc = "Run End to End automation suite") do |t|
   ENV['RAKE_TASK'] = 'appium_test_saucelab'
-  t.cucumber_opts = "--tags ~@sauce --format pretty ./features/."
+  t.cucumber_opts = "--tags @sauce ~@ignore --format pretty ./features/."
 end
