@@ -11,23 +11,36 @@ max_wait_in_seconds = 10
 World PageObject::PageFactory
 World Test::Unit::Assertions  # need this for 'assert' method
 
-SAUCE_USERNAME = ENV["SAUCE_USERNAME"]
-SAUCE_ACCESS_KEY = ENV["SAUCE_ACCESS_KEY"]
+# SAUCE_USERNAME = ENV["SAUCE_USERNAME"]
+# SAUCE_ACCESS_KEY = ENV["SAUCE_ACCESS_KEY"]
 
-# SAUCE_USERNAME = "nhung_nguyen"
-# SAUCE_ACCESS_KEY = "e6199f20-a2cb-436e-8158-51ad8bbbac6c"
+SAUCE_USERNAME = "nhung_nguyen"
+SAUCE_ACCESS_KEY = "e6199f20-a2cb-436e-8158-51ad8bbbac6c"
 
-def desired_caps 
+def desired_caps_ci
 	{ caps:       
 		{
 	    	'appium-version' => '1.5.2',
 	    	platformName:  'iOS',
-	    	# platformVersion: '9.2',
 	    	platformVersion: '8.1',
 		    deviceName:    'iPhone 6',
-		    # deviceName: 'iPhone Simulator', # this is for sauce
 		    app:           APP_PATH_LOCAL
-		    # app: 			APP_PATH_SAUCE
+		},
+		appium_lib: {
+			sauce_username: SAUCE_USERNAME,
+			sauce_access_key:  SAUCE_ACCESS_KEY
+	    }
+	}
+end
+
+def desired_caps_saucelab
+	{ caps:       
+		{
+	    	'appium-version' => '1.5.2',
+	    	platformName:  'iOS',
+	    	platformVersion: '9.2',
+		    deviceName:    'iPhone Simulator',
+		    app:           APP_PATH_SAUCE
 		},
 		appium_lib: {
 			sauce_username: SAUCE_USERNAME,
@@ -87,7 +100,13 @@ Before do
 		$global_setup = true
 		sleep 5
 	end
-	@driver = Appium::Driver.new(desired_caps)
+	current_task = ENV['RAKE_TASK']
+	if current_task == 'appium_test_saucelab'
+		@driver = Appium::Driver.new(desired_caps_saucelab)
+	elsif current_task == 'appium_test_ci'
+		@driver = Appium::Driver.new(desired_caps_ci)
+	end
+
 
   # need to type @browser to be able to use PageObject (OMG!!!), just '@driver.start_driver' doesn't work
 	@browser = @driver.start_driver
@@ -101,5 +120,3 @@ end
 at_exit do
   shutdown_appium
 end
-
-

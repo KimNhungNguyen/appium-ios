@@ -18,20 +18,11 @@ task :package => [:unit_test, :integration_test, :acceptance_test] do
 end
 
 Cucumber::Rake::Task.new(task_name = "appium_test_ci", desc = "Run End to End automation suite") do |t|
+  ENV['RAKE_TASK'] = 'appium_test_ci'
   t.cucumber_opts = "--tags ~@ci --format pretty ./features/."
 end
 
-Cucumber::Rake::Task.new(task_name = "appium_test_sauce", desc = "Run End to End automation suite") do |t|
+Cucumber::Rake::Task.new(task_name = "appium_test_saucelab", desc = "Run End to End automation suite") do |t|
+  ENV['RAKE_TASK'] = 'appium_test_saucelab'
   t.cucumber_opts = "--tags ~@sauce --format pretty ./features/."
-end
-
-
-task :acceptance_test_ci => [:unit_test, :integration_test] do
-  puts "Perform user acceptance test"
-  Rake::Task["appium_test_ci"].invoke
-end
-
-task :acceptance_test_sauce => [:unit_test, :integration_test] do
-	puts "Perform user acceptance test on saucelab"
-	Rake::Task['appium_test_sauce'].invoke
 end

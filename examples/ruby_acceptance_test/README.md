@@ -34,7 +34,15 @@ Note:
 1. Upload to sauce storage is not working. So I choose to upload it into dropbox
 2. The reason why I do not run from travis_ci to Saucelab as we rarely do CI to Saucelab.
 
+= using CCMenu to watch the build on travis_ci:
+Open CCMenu, choose Preference. Then '+' and add the following URL to access the CruiseControl feed. This is for public repo.
+https://api.travis-ci.org/repos/KimNhungNguyen/appium-ios/cc.xml
+There's another way for private repo
 
+= Are there real devices on Sauce lab?
+The Real Device Cloud is now available in beta for enterprise customers, with pricing starting at $449 per device per month.
+
+= You can upload, download, zip a file via terminal. Learn that :-). It's not that difficult
 
 ==> Questions:
 + Why app restart twice whenever it runs?
